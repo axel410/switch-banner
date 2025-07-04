@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Support Documentation Banner</title>
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Use the Inter font family */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 flex items-center justify-center p-4">
+
+    <!-- Main Banner Container -->
+    <div class="w-full max-w-6xl">
+        <div class="bg-white border border-gray-200 rounded-2xl shadow-sm p-6 md:p-8">
+            <!-- Header Section -->
+            <div class="text-center mb-6">
+                <h2 class="text-xl sm:text-2xl font-semibold text-gray-800">Find help for your Zenfolio version:</h2>
+            </div>
+
+            <!-- Horizontal Navigation Options -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+
+                <!-- Option 1: Zenfolio NextZen (Orange) -->
+                <a id="nextzen-card" href="https://success.zenfolio.com/hc/en-us" class="group flex items-center bg-white rounded-xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-orange-300 hover:shadow-lg">
+                    <!-- Image container on the left that expands on hover -->
+                    <div class="flex-shrink-0 w-32 sm:w-40 h-full overflow-hidden transition-all duration-300 ease-in-out group-hover:w-48 sm:group-hover:w-64">
+                        <img src="https://zenfolio.com/wp-content/uploads/2020/12/new-zenfolio-thumb-shadowless.png" 
+                             alt="Zenfolio NextZen Interface" 
+                             class="h-full w-full object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/FFF0E6/FF8C33?text=NextZen';">
+                    </div>
+                    <!-- Text content on the right -->
+                    <div class="p-4 sm:p-5 relative w-full">
+                        <span class="you-are-here-badge hidden absolute top-2 right-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">You are here</span>
+                        <h3 class="text-lg font-bold text-gray-900">Zenfolio NextZen</h3>
+                        <p class="mt-1 text-sm text-gray-600">For ProSuite, PortfolioPlus, Portfolio.</p>
+                        <p class="cta-link mt-3 text-orange-600 font-semibold text-sm">
+                            Go to NextZen support <span class="group-hover:ml-1 transition-all">&rarr;</span>
+                        </p>
+                    </div>
+                </a>
+
+                <!-- Option 2: Classic Zenfolio (Blue) -->
+                <a id="classic-card" href="https://support.zenfolio.com/hc/en-us" class="group flex items-center bg-white rounded-xl transition-all duration-300 overflow-hidden border border-gray-200 hover:border-blue-300 hover:shadow-lg">
+                    <!-- Image container on the left that expands on hover -->
+                    <div class="flex-shrink-0 w-32 sm:w-40 h-full overflow-hidden transition-all duration-300 ease-in-out group-hover:w-48 sm:group-hover:w-64">
+                        <img src="https://zenfolio.com/wp-content/uploads/2021/04/image-zen-classic-3x.png" 
+                             alt="Classic Zenfolio Interface" 
+                             class="h-full w-full object-cover"
+                             onerror="this.onerror=null;this.src='https://placehold.co/400x300/EBF5FF/3B82F6?text=Classic';">
+                    </div>
+                     <!-- Text content on the right -->
+                    <div class="p-4 sm:p-5 relative w-full">
+                        <span class="you-are-here-badge hidden absolute top-2 right-2 bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded-full">You are here</span>
+                        <h3 class="text-lg font-bold text-gray-900">Classic Zenfolio</h3>
+                        <p class="mt-1 text-sm text-gray-600">For Basic, Unlimited, Starter, and other legacy plans.</p>
+                        <p class="cta-link mt-3 text-blue-600 font-semibold text-sm">
+                            Go to Classic support <span class="group-hover:ml-1 transition-all">&rarr;</span>
+                        </p>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // This script checks the current URL to display the "You are here" badge.
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the hostname from the browser's current URL.
+            const currentHost = window.location.hostname;
+            
+            // Define the hostnames for the two support sites.
+            const nextzenHost = 'success.zenfolio.com';
+            const classicHost = 'support.zenfolio.com';
+
+            // Get the card and CTA elements from the HTML.
+            const nextzenCard = document.getElementById('nextzen-card');
+            const classicCard = document.getElementById('classic-card');
+            const nextzenBadge = nextzenCard.querySelector('.you-are-here-badge');
+            const classicBadge = classicCard.querySelector('.you-are-here-badge');
+            const nextzenCta = nextzenCard.querySelector('.cta-link');
+            const classicCta = classicCard.querySelector('.cta-link');
+
+            // Check if the current page is the NextZen support site.
+            if (currentHost === nextzenHost) {
+                // Show the badge.
+                nextzenBadge.classList.remove('hidden');
+                // Hide the CTA link.
+                nextzenCta.classList.add('hidden');
+                // Make the card look 'inactive' and remove hover effects and clickability.
+                nextzenCard.classList.remove('group');
+                nextzenCard.style.pointerEvents = 'none';
+                nextzenCard.style.opacity = '0.7';
+            } 
+            // Check if the current page is the Classic support site.
+            else if (currentHost === classicHost) {
+                // Show the badge.
+                classicBadge.classList.remove('hidden');
+                // Hide the CTA link.
+                classicCta.classList.add('hidden');
+                // Make the card look 'inactive' and remove hover effects and clickability.
+                classicCard.classList.remove('group');
+                classicCard.style.pointerEvents = 'none';
+                classicCard.style.opacity = '0.7';
+            }
+        });
+    </script>
+
+</body>
+</html>
